@@ -33,6 +33,9 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 - task: PublishBuildArtifacts@1
-- task: DotNetCoreCLI@2
+- task: AzureRmWebAppDeployment@4
   inputs:
-    command: 'build'
+    ConnectionType: 'AzureRM'
+    appType: 'webApp'
+    WebAppName: 
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
